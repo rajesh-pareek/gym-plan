@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Plan</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://wallpaperaccess.com/full/5469599.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: yellow; /* Crimson color */
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+
+    .quote {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: 15px;
+      color: yellow; /* Crimson color */
+      font-style: italic;
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #333;
+    }
+
+    th {
+      background-color: yellow; /* Crimson color */
+      color: #121212;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    td {
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+    }
+
+    tr:hover {
+      background-color: #333;
+      transition: background-color 0.3s;
+    }
+
+    .day-title {
+      font-weight: 600;
+      color: yellow; /* Crimson color */
+      margin: 15px 0;
+      font-size: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin: 20px 0;
+      background-color: yellow; /* Crimson color */
+      color: #121212;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #c71585; /* Darker Crimson */
+      transform: scale(1.05);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      background-color: #1e1e1e;
+      
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 10px;
+      color: #e0e0e0;
+    }
+
+    .modal-content h2 {
+      color: yellow; /* Crimson color */
+    }
+
+    .close {
+      color: yellow; /* Crimson color */
+      float: right;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #c71585; /* Darker Crimson */
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      th, td {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Rajesh's 2-Month Workout Plan</h1>
+    <p class="quote">"The only bad workout is the one that didn't happen." – Arnold Schwarzenegger</p>
+  </header>
+
+  <div class="container">
+    <h2 class="day-title">Weeks 1-4: Building Foundation</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Focus</th>
+          <th>Exercises</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr onclick="openModal('modal1')">
+          <td>Day 1</td>
+          <td>Shoulders & Back</td>
+          <td>Overhead Press, Lateral Raises, Pull-ups, Cable Rows, Dumbbell Shrugs</td>
+        </tr>
+        <tr onclick="openModal('modal2')">
+          <td>Day 2</td>
+          <td>Chest & Arms</td>
+          <td>Bench Press, Incline Press, Bicep Curls, Tricep Pushdowns, Chest Fly</td>
+        </tr>
+        <tr onclick="openModal('modal3')">
+          <td>Day 3</td>
+          <td>Legs & Core</td>
+          <td>Squats, Leg Press, Lunges, Standing Cable Crunches, Hanging Leg Raises</td>
+        </tr>
+        <tr onclick="openModal('modal4')">
+          <td>Day 4</td>
+          <td>Shoulders & Back</td>
+          <td>Arnold Press, Wide Pull-ups, Seated Row, Kettlebell Swings</td>
+        </tr>
+        <tr onclick="openModal('modal5')">
+          <td>Day 5</td>
+          <td>Chest, Arms & Core</td>
+          <td>Incline Press, Cable Chest Fly, Standing Barbell Curls, Dips</td>
+        </tr>
+        <tr onclick="openModal('modal6')">
+          <td>Day 6</td>
+          <td>Cardio & Lower Body</td>
+          <td>Jogging, Leg Press, Deadlifts, Standing Calf Raises</td>
+        </tr>
+        <tr onclick="openModal('modal7')">
+          <td>Day 7</td>
+          <td>Rest / Recovery</td>
+          <td>Active recovery, yoga, or light cardio</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="day-title">Weeks 5-8: Progression & Intensification</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Focus</th>
+          <th>Exercises</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr onclick="openModal('modal8')">
+          <td>Day 1</td>
+          <td>Shoulders & Back</td>
+          <td>Progressively add weight, focus on form</td>
+        </tr>
+        <tr onclick="openModal('modal9')">
+          <td>Day 2</td>
+          <td>Chest & Arms</td>
+          <td>Add supersets, increase intensity</td>
+        </tr>
+        <tr onclick="openModal('modal10')">
+          <td>Day 3</td>
+          <td>Legs & Core</td>
+          <td>Increase reps or weight, add explosive movements</td>
+        </tr>
+        <tr onclick="openModal('modal11')">
+          <td>Day 4</td>
+          <td>Shoulders & Back</td>
+          <td>Focus on width, progressive overload</td>
+        </tr>
+        <tr onclick="openModal('modal12')">
+          <td>Day 5</td>
+          <td>Chest, Arms & Core</td>
+          <td>Keep intensity high, supersets with compound exercises</td>
+        </tr>
+        <tr onclick="openModal('modal13')">
+          <td>Day 6</td>
+          <td>Cardio & Lower Body</td>
+          <td>Focus on fat burning and leg development</td>
+        </tr>
+        <tr onclick="openModal('modal14')">
+          <td>Day 7</td>
+          <td>Rest / Recovery</td>
+          <td>Stretch or perform light activity</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a href="#" class="btn">Start Your Plan</a>
+  </div>
+
+  <!-- Modals -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+      <h2>Day 1: Shoulders & Back</h2>
+      <p><strong>Overhead Press:</strong> 4 sets of 8-12 reps</p>
+      <p><strong>Lateral Raises:</strong> 3 sets of 12-15 reps</p>
+      <p><strong>Pull-ups:</strong> 3 sets of as many reps as possible</p>
+      <p><strong>Cable Rows:</strong> 4 sets of 10-12 reps</p>
+      <p><strong>Dumbbell Shrugs:</strong> 3 sets of 12-15 reps</p>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal2')">&times;</span>
+      <h2>Day 2: Chest & Arms</h2>
+      <p><strong>Bench Press:</strong> 4 sets of 8-12 reps</p>
+      <p><strong>Incline Press:</strong> 3 sets of 10-12 reps</p>
+      <p><strong>Bicep Curls:</strong> 3 sets of 12-15 reps</p>
+      <p><strong>Tricep Pushdowns:</strong> 3 sets of 12-15 reps</p>
+      <p><strong>Chest Fly:</strong> 3 sets of 12-15 reps</p>
+    </div>
+  </div>
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal3')">&times;</span>
+      <h2>Day 3: Legs & Core</h2>
+      <p><strong>Squats:</strong> 4 sets of 8-12 reps</p>
+      <p><strong>Leg Press:</strong> 3 sets of 10-12 reps</p>
+      <p><strong>Lunges:</strong> 3 sets of 12-15 reps per leg</p>
+      <p><strong>Standing Cable Crunches:</strong> 3 sets of 15 reps</p>
+      <p><strong>Hanging Leg Raises:</strong> 3 sets of 12-15 reps</p>
+    </div>
+  </div>
+
+  <div id="modal4" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal4')">&times;</span>
+      <h2>Day 4: Shoulders & Back</h2>
+      <p><strong>Arnold Press:</strong> 4 sets of 8-12 reps</p>
+      <p><strong>Wide Pull-ups:</strong> 3 sets of as many reps as possible</p>
+      <p><strong>Seated Row:</strong> 4 sets of 10-12 reps</p>
+      <p><strong>Kettlebell Swings:</strong> 3 sets of 15-20 reps</p>
+    </div>
+  </div>
+
+  <div id="modal5" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal5')">&times;</span>
+      <h2>Day 5: Chest, Arms & Core</h2>
+      <p><strong>Incline Press:</strong> 4 sets of 8-12 reps</p>
+      <p><strong>Cable Chest Fly:</strong> 3 sets of 12-15 reps</p>
+      <p><strong>Standing Barbell Curls:</strong> 3 sets of 12-15 reps</p>
+      <p><strong>Dips:</strong> 3 sets of as many reps as possible</p>
+    </div>
+  </div>
+
+  <div id="modal6" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal6')">&times;</span>
+      <h2>Day 6: Cardio & Lower Body</h2>
+      <p><strong>Jogging:</strong> 20-30 minutes</p>
+      <p><strong>Leg Press:</strong> 4 sets of 10-12 reps</p>
+      <p><strong>Deadlifts:</strong> 4 sets of 8-12 reps</p>
+      <p><strong>Standing Calf Raises:</strong> 3 sets of 15-20 reps</p>
+    </div>
+  </div>
+
+  <div id="modal7" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal7')">&times;</span>
+      <h2>Day 7: Rest / Recovery</h2>
+      <p>Active recovery, yoga, or light cardio. Focus on stretching and relaxation.</p>
+    </div>
+  </div>
+
+  <div id="modal8" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal8')">&times;</span>
+      <h2>Day 1: Shoulders & Back (Weeks 5-8)</h2>
+      <p>Progressively add weight, focus on form and proper execution.</p>
+    </div>
+  </div>
+
+  <div id="modal9" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal9')">&times;</span>
+      <h2>Day 2: Chest & Arms (Weeks 5-8)</h2>
+      <p>Add supersets, increase intensity, focus on muscle pump and endurance.</p>
+    </div>
+  </div>
+
+  <div id="modal10" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal10')">&times;</span>
+      <h2>Day 3: Legs & Core (Weeks 5-8)</h2>
+      <p>Increase reps or weight, add explosive movements like jump squats.</p>
+    </div>
+  </div>
+
+  <div id="modal11" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal11')">&times;</span>
+      <h2>Day 4: Shoulders & Back (Weeks 5-8)</h2>
+      <p>Focus on width and overall development, use progressive overload.</p>
+    </div>
+  </div>
+
+  <div id="modal12" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal12')">&times;</span>
+      <h2>Day 5: Chest, Arms & Core (Weeks 5-8)</h2>
+      <p>Maintain high intensity, incorporate supersets and compound movements.</p>
+    </div>
+  </div>
+
+  <div id="modal13" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal13')">&times;</span>
+      <h2>Day 6: Cardio & Lower Body (Weeks 5-8)</h2>
+      <p>Focus on fat burning, incorporate high-intensity interval training (HIIT).</p>
+    </div>
+  </div>
+
+  <div id="modal14" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal14')">&times;</span>
+      <h2>Day 7: Rest / Recovery (Weeks 5-8)</h2>
+      <p>Active recovery with stretching, light activity, or yoga.</p>
+    </div>
+  </div>
+
+  <script>
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
+
